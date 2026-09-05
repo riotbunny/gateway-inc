@@ -35,3 +35,39 @@
     to { opacity: 1; transform: translateX(0); }
   }
 }
+
+/* Force Google Places Autocomplete dropdown to appear above the input */
+.pac-container {
+  transform: translateY(calc(-100% - 62px)); /* Flips it above the 56px tall input + a little gap */
+  background-color: #0f172a !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 0.375rem !important;
+  font-family: inherit !important;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.4) !important;
+  z-index: 1000 !important;
+}
+
+.pac-item {
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #cbd5e1 !important;
+  padding: 10px 16px !important;
+  cursor: pointer !important;
+}
+
+.pac-item:hover, .pac-item-selected {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.pac-item-query {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+}
+
+.pac-matched {
+  color: #ffffff !important;
+}
+
+/* Hide the Google logo at the bottom to save space */
+.pac-logo::after {
+  display: none !important;
+}

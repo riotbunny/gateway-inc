@@ -284,14 +284,6 @@ export default function FormModal({ onClose }) {
           body: JSON.stringify(p50Payload)
         })
       ]);
-      
-      if (typeof window !== 'undefined' && window.fbq) {
-        window.fbq('track', 'Lead', {
-          content_name: 'Prime Coverage Lead',
-          currency: 'USD',
-          value: 0.00
-        });
-      }
 
       setTimeout(() => {
         setIsBuildingOffer(false);
@@ -702,13 +694,25 @@ export default function FormModal({ onClose }) {
                       }}
                     />
                   </div>
-
-                  <p className="text-red-400 font-bold text-xs text-center px-2 mt-2">
+                <p className="text-red-400 font-bold text-xs text-center px-2 mt-2">
                     Note: Unclaimed ports in {location.city} are automatically released to the next address in queue after 10 minutes.
                   </p>
 
                   <div className="mt-6 space-y-3">
-                    <Button type="submit" disabled={isSubmitting} className="w-full animate-pulse">
+                    <Button 
+                      type="submit" 
+                      disabled={isSubmitting} 
+                      className="w-full animate-pulse"
+                      onClick={() => {
+                        if (typeof window !== 'undefined' && window.fbq) {
+                          window.fbq('track', 'Lead', {
+                            content_name: 'Prime Coverage Lead',
+                            currency: 'USD',
+                            value: 0.00
+                          });
+                        }
+                      }}
+                    >
                       {isSubmitting ? (
                         <><Loader2 size={18} className="mr-2 animate-spin text-slate-950" /> Unlocking...</>
                       ) : 'Lock In Prime Coverage'}
